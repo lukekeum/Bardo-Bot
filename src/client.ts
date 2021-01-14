@@ -4,7 +4,7 @@ import { readdirSync } from 'fs';
 import logger from './config/winston';
 
 class App {
-  private client: Client;
+  public client: Client;
 
   private commands: Collection<string, Function>;
   private prefix: string;
@@ -21,10 +21,6 @@ class App {
   public login() {
     const { TOKEN = '' } = process.env;
     this.client.login(TOKEN).then(() => logger.info('Bot is running now'));
-  }
-
-  public getClient() {
-    return this.client;
   }
 
   private handleCommand() {
