@@ -1,4 +1,5 @@
 import Discord, { Client } from 'discord.js';
+import logger from './config/winston';
 
 class App {
   private client: Client;
@@ -9,7 +10,7 @@ class App {
 
   login() {
     const { TOKEN = '' } = process.env;
-    this.client.login(TOKEN).then(() => console.log('Bot is running now'));
+    this.client.login(TOKEN).then(() => logger.info('Bot is running now'));
   }
 
   getClient() {
