@@ -7,5 +7,5 @@ export function DiscordEvent<K extends keyof ClientEvents>(name: K) {
 }
 
 export interface EventHandler {
-  execute<K extends keyof ClientEvents>(...args: ClientEvents[K]): void;
+  execute(...args: any[]): void;
 }
