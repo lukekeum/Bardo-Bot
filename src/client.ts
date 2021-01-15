@@ -30,7 +30,7 @@ class App {
     );
 
     for (const file of commandFiles) {
-      const command = require(`${CommandDir}/${file}`).default;
+      const command = require(`./commands/${file}`).default;
       if (typeof command === 'function') continue;
       const { command: cmd, execute } = new command();
       if (typeof cmd === 'string') this.commands.set(cmd, execute);
@@ -73,7 +73,7 @@ class App {
     );
 
     for (const file of eventFiles) {
-      const event = require(`${EventDir}/${file}`).default;
+      const event = require(`./events/${file}`).default;
       if (typeof event === 'function') continue;
       const { eventType, execute } = new event();
       this.client.on(eventType, execute);
