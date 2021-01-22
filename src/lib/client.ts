@@ -16,47 +16,56 @@ class Client {
     });
   }
 
-  public async get(path: string, payload: any = null): Promise<AxiosResponse> {
+  public async get(
+    path: string,
+    payload: any = null
+  ): Promise<AxiosResponse | null> {
     try {
       const response = await this.axios.get(path, payload);
       return response;
     } catch (err) {
       logger.error(err);
     }
-    return (null as unknown) as AxiosResponse;
+    return null;
   }
 
-  public async put(path: string, payload: any = null): Promise<AxiosResponse> {
+  public async put(
+    path: string,
+    payload: any = null
+  ): Promise<AxiosResponse | null> {
     try {
       const response = await this.axios.put(path, payload);
       return response;
     } catch (err) {
       logger.error(err);
     }
-    return (null as unknown) as AxiosResponse;
+    return null;
   }
 
-  public async post(path: string, payload: any = null): Promise<AxiosResponse> {
+  public async post(
+    path: string,
+    payload: any = null
+  ): Promise<AxiosResponse | null> {
     try {
       const response = await this.axios.post(path, payload);
       return response;
     } catch (err) {
       logger.error(err);
     }
-    return (null as unknown) as AxiosResponse;
+    return null;
   }
 
   public async delete(
     path: string,
     payload: any = null
-  ): Promise<AxiosResponse> {
+  ): Promise<AxiosResponse | null> {
     try {
       const response = await this.axios.delete(path, payload);
       return response;
     } catch (err) {
       logger.error(err);
     }
-    return (null as unknown) as AxiosResponse;
+    return null;
   }
 }
 
