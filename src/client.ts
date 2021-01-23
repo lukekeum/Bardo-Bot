@@ -25,6 +25,9 @@ class Bot {
     // Register Command handler && Event handler
     this.handleCommand();
     this.handleEvent();
+
+    // varify command on message event
+    this.client.on('message', this.checkCommand);
   }
 
   public login() {
@@ -49,11 +52,10 @@ class Bot {
         }
       }
     }
-    this.checkCommand();
   }
 
   private checkCommand() {
-    this.client.on('message', async (message) => {
+    const commandHandler = async (message: Message) => {
       if (!message.content.startsWith(this.prefix) || message.author.bot)
         return;
 
@@ -72,7 +74,8 @@ class Bot {
         logger.error(err.message);
         message.reply('An error occurred while processing the command');
       }
-    });
+    };
+    return commandHandler;
   }
 
   private handleEvent() {
