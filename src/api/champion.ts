@@ -7,13 +7,13 @@ interface IRotationResponseData {
   maxNewPlayerLevel: number;
 }
 
+"https://ddragon.leagueoflegends.com/cdn/10.6.1/data/ko_KR/champion.json"
+
 type TRotationFN = () => Promise<IRotationResponseData | null>;
 
 export const getRotationChamp: TRotationFN = async () => {
   try {
     const response = await client.get('/lol/platform/v3/champion-rotations');
-    if (!response) throw new Error('AxiosResponse: response is unknown');
-
     return response.data as IRotationResponseData;
   } catch (err) {
     logger.error(err);
