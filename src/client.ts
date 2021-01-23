@@ -1,12 +1,21 @@
-import Discord, { Client, Collection } from 'discord.js';
+import Discord, { Client, Collection, Message } from 'discord.js';
 import { readdirSync } from 'fs';
 
 import logger from './config/winston';
 
-class App {
+type TArgument = Array<string> | null;
+
+interface ICommandParam {
+  message: Message;
+  args: TArgument;
+}
+
+type TExecute = ({ message, args }: ICommandParam) => void;
+
+class Client {
   public client: Client;
 
-  private commands: Collection<string, Function>;
+  private commands: Collection<string, TExecute>;
   private prefix: string;
 
   constructor() {
@@ -81,6 +90,6 @@ class App {
   }
 }
 
-const app = new App();
+const client = new Client();
 
-export default app;
+export default client;
