@@ -29,10 +29,7 @@ class Client {
     }
   }
 
-  public async put(
-    path: string,
-    payload: any = null
-  ): Promise<AxiosResponse | null> {
+  public async put(path: string, payload: any = null): Promise<AxiosResponse> {
     try {
       const response = await this.axios.put(path, payload);
       return response;
@@ -41,10 +38,7 @@ class Client {
     }
   }
 
-  public async post(
-    path: string,
-    payload: any = null
-  ): Promise<AxiosResponse | null> {
+  public async post(path: string, payload: any = null): Promise<AxiosResponse> {
     try {
       const response = await this.axios.post(path, payload);
       return response;
@@ -56,7 +50,7 @@ class Client {
   public async delete(
     path: string,
     payload: any = null
-  ): Promise<AxiosResponse | null> {
+  ): Promise<AxiosResponse> {
     try {
       const response = await this.axios.delete(path, payload);
       return response;
