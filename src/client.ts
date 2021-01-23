@@ -12,7 +12,7 @@ interface ICommandParam {
 
 type TExecute = ({ message, args }: ICommandParam) => void;
 
-class Client {
+class Bot {
   public client: Client;
 
   private commands: Collection<string, TExecute>;
@@ -90,6 +90,6 @@ class Client {
   }
 }
 
-const client = new Client();
+const client = new Bot();
 
 export default client;
