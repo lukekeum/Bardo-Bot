@@ -1,5 +1,4 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import logger from '../config/winston';
 
 class Client {
   private axios: AxiosInstance;
@@ -16,17 +15,13 @@ class Client {
     });
   }
 
-  public async get(
-    path: string,
-    payload: any = null
-  ): Promise<AxiosResponse | null> {
+  public async get(path: string, payload: any = null): Promise<AxiosResponse> {
     try {
       const response = await this.axios.get(path, payload);
       return response;
     } catch (err) {
-      logger.error(err);
+      throw new Error(err);
     }
-    return null;
   }
 
   public async put(
@@ -37,9 +32,8 @@ class Client {
       const response = await this.axios.put(path, payload);
       return response;
     } catch (err) {
-      logger.error(err);
+      throw new Error(err);
     }
-    return null;
   }
 
   public async post(
@@ -50,9 +44,8 @@ class Client {
       const response = await this.axios.post(path, payload);
       return response;
     } catch (err) {
-      logger.error(err);
+      throw new Error(err);
     }
-    return null;
   }
 
   public async delete(
@@ -63,9 +56,8 @@ class Client {
       const response = await this.axios.delete(path, payload);
       return response;
     } catch (err) {
-      logger.error(err);
+      throw new Error(err);
     }
-    return null;
   }
 }
 

@@ -1,4 +1,7 @@
 import './config/env';
-import app from './client';
+import client from './client';
+import app from './app';
 
-app.login();
+client.login();
+
+app.listen();
